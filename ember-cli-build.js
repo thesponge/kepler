@@ -21,5 +21,8 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
+  app.import('bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css');
+  app.import('bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.js');
+
   return app.toTree();
 };

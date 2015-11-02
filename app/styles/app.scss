@@ -18,6 +18,9 @@ html {
 
 main {
   flex: 1 0 auto;
+  >div.row.grey {
+    margin-bottom: 0px;
+  }
   >div.row>div.col.s3 {
     padding-left:  0px;
     padding-right: 0px;
@@ -28,6 +31,8 @@ main {
       margin-top: -24px;
       border-color: rgba(255,255,255, 0);
       /*padding-right: 5px;*/
+      height: 400px;
+      position: relative;
       >a.collection-item {
         position: relative;
         margin-bottom: 10px;
@@ -52,6 +57,9 @@ main {
     >div.collection>a.collection-item {
       border-radius: 5px 0px 0px 5px;
     }
+  }
+  >footer {
+    margin-top: 0px;
   }
 }
 
