@@ -1,3 +1,27 @@
-<h2 id="title">Welcome to Ember</h2>
+<div class="page-flexbox-wrapper">
+<header>
+  {{partial 'partials/navbar'}}
+</header>
 
-{{outlet}}
+<main>
+  <div class="notifications-container">
+    {{#each notifications as |notification|}}
+      {{notification-message notification=notification}}
+    {{/each}}
+  </div>
+
+  {{outlet}}
+</main>
+
+<footer class="page-footer teal darken-4">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+      </div>
+    </div>
+  </div>
+</footer>
+
+{{!-- ember-cli-materialize modal container --}}
+{{md-modal-container}}
+</div>

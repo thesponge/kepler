@@ -1,0 +1,45 @@
+<div class="navbar-fixed">
+<nav class="teal darken-4">
+  <div class="nav-wrapper">
+    {{#link-to 'index' class="brand-logo"}}
+      <i class="mdi-action-view-carousel yellow-text text-darken-3" style="margin-left: 1em;">&nbsp;<b>KEP</b></i>
+    {{/link-to}}
+    <ul id="nav-mobile" class="right hide-on-med-and-down amber-text text-accent-3">
+      {{#if session.isAuthenticated}}
+        {{#link-to 'match.dashboard' tagName='li'}}
+            {{link-to 'Match' 'match.dashboard'}}
+        {{/link-to}}
+        <li {{action 'invalidateSession'}} style="cursor: pointer;">
+          <a {{action 'invalidateSession'}}>Logout</a>
+        </li>
+      {{else}}
+        {{#link-to 'register' tagName='li'}}
+            {{link-to 'Register' 'register'}}
+        {{/link-to}}
+        {{#link-to 'login' tagName='li'}}
+            {{link-to 'Login' 'login'}}
+        {{/link-to}}
+      {{/if}}
+    </ul>
+  </div>
+</nav>
+</div>
+{{!--
+{{#md-navbar class='indigo'}}
+  {{#if session.isAuthenticated}}
+    {{#link-to 'match.dashboard' tagName='li'}}
+        {{link-to 'Match' 'match.dashboard'}}
+    {{/link-to}}
+    <li {{action 'invalidateSession'}} style="cursor: pointer;">
+      <a {{action 'invalidateSession'}}>Logout</a>
+    </li>
+  {{else}}
+    {{#link-to 'register' tagName='li'}}
+        {{link-to 'Register' 'register'}}
+    {{/link-to}}
+    {{#link-to 'login' tagName='li'}}
+        {{link-to 'Login' 'login'}}
+    {{/link-to}}
+  {{/if}}
+{{/md-navbar}}
+--}}

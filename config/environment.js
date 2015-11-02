@@ -16,10 +16,31 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+      'ember-cli-notifications': {
+          includeFontAwesome: true
+      },
+    },
   };
 
+  ENV['ember-simple-auth'] = {
+    routeAfterAuthentication    : "match.dashboard",
+    routeIfAlreadyAuthenticated : "match.dashboard",
+  };
+
+  ENV.contentSecurityPolicy = {
+    'default-src': "'self'",
+    'script-src': "'self' 'unsafe-eval' 'unsafe-inline' *",
+    'font-src': "'self' https://fonts.gstatic.com",
+    'connect-src': "'self' http://0.0.0.0:3000 https://api.mixpanel.com http://localhost:3000 http://localhost:35729",
+    'img-src': "'self' *",
+    'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com",
+    'media-src': "'self'",
+    'report-uri': "http://localhost:4200"
+  }
+
   if (environment === 'development') {
+    ENV.APP.apiHost = 'http://localhost:3000';
+    ENV.APP.apiNamespace = 'v1';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -39,9 +60,16 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
-  if (environment === 'production') {
+  if (environment === 'staging') {
+    ENV.APP.apiHost = 'http://api.staging.kep.thesponge.eu';
+    ENV.APP.apiNamespace = 'v1';
 
   }
 
+  if (environment === 'production') {
+    ENV.APP.apiHost = 'http://api.kep.thesponge.eu';
+    ENV.APP.apiNamespace = 'v1';
+
+  }
   return ENV;
 };
