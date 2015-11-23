@@ -16,6 +16,13 @@ html {
   flex-direction: column;
 }
 
+div.notifications-container {
+  position: absolute;
+  width: 30%;
+  left: 50%;
+  margin-left: -15%;
+}
+
 main {
   flex: 1 0 auto;
   >div.row.grey {
@@ -27,7 +34,7 @@ main {
     input[type='text'] {
       background-color: rgba(255,255,255,.5);
     }
-    >div.collection {
+    div.collection {
       margin-top: -24px;
       border-color: rgba(255,255,255, 0);
       /*padding-right: 5px;*/
@@ -64,4 +71,3 @@ main {
 }
 
 div.v50 { display: block; height: 50px; }
-

@@ -61,7 +61,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'staging') {
-    ENV.APP.apiHost = 'http://api.staging.kep.thesponge.eu';
+    ENV.APP.apiHost = 'http://api.kep.thesponge.eu';
     ENV.APP.apiNamespace = 'v1';
 
   }
