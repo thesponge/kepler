@@ -1,7 +1,7 @@
 {
   "name": "kepler",
-  "version": "0.0.0",
-  "description": "Small description for kepler goes here",
+  "version": "0.0.1",
+  "description": "Knowledge Exchange frontend",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -9,14 +9,14 @@
   },
   "scripts": {
     "build": "ember build",
-    "start": "ember server",
+    "start": "ember server --proxy http://0.0.0.0:3000",
     "test": "ember test"
   },
-  "repository": "",
+  "repository": "https://github.com/thesponge/kepler.git",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 0.12.0"
   },
-  "author": "",
+  "author": "Victor Nițu",
   "license": "MIT",
   "devDependencies": {
     "active-model-adapter": "2.0.3",
