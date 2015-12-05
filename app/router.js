@@ -12,6 +12,14 @@ Router.map(function() {
   this.route('match', function() {
     this.route('dashboard');
   });
+
+  this.route('assignments', function() {
+    this.route('show');
+  });
+
+  this.route('account', function() {
+    this.route('show');
+  });
 });
 
 export default Router;
