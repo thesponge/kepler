@@ -31,7 +31,7 @@ var Account = DS.Model.extend({
     } else {
       return this.get('user.email').replace(/@.*$/g, '');
     }
-  }),
+  }).property('display_name'),
   formattedBio: Ember.computed(function() {
         return this.get('bio').replace(/\n\r?/g, '<br>');
   }).property('bio').cacheable()

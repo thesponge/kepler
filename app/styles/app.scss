@@ -40,7 +40,7 @@ main {
       /*padding-right: 5px;*/
       height: 400px;
       position: relative;
-      >a.collection-item {
+      a.collection-item {
         position: relative;
         margin-bottom: 10px;
         border-bottom: 0px solid white;
@@ -49,6 +49,7 @@ main {
         &:hover {
           box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0);
         }
+        &.active { background-color: inherit; color: #26a69a;}
         i.favorite-icon {
           position: absolute;
           top: 5px;
@@ -71,3 +72,13 @@ main {
 }
 
 div.v50 { display: block; height: 50px; }
+
+/* Submission styles */
+div.row.submission-header {
+    p.byline {
+        font-size: .7em;
+    }
+}
+
+/* Various customizations */
+.tooltipstered { display: inline-block; border-bottom: 1px rgba(0,0,0,.5) dotted; }
