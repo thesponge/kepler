@@ -82,3 +82,9 @@ div.row.submission-header {
 
 /* Various customizations */
 .tooltipstered { display: inline-block; border-bottom: 1px rgba(0,0,0,.5) dotted; }
+.select2-container {
+  width: 100%;
+  input {
+    height: 24px;
+  }
+}

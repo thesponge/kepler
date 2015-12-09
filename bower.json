@@ -15,11 +15,14 @@
     "ember-simple-auth": "0.8.0",
     "perfect-scrollbar": "~0.6.7",
     "JavaScript-MD5": "~1.1.1",
-    "tooltipster": "~3.3.0"
+    "tooltipster": "~3.3.0",
+    "select2": "3.5.2"
   },
   "resolutions": {
     "jquery": ">=2.1.1",
     "qunit-notifications": "~0.1.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "pace": "vectart/pace#master"
+  }
 }

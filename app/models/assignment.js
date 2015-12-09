@@ -14,24 +14,24 @@ var Assignment = DS.Model.extend({
                               {inverse: 'assignments', async: true}
                             ),
     show_route              : 'assignments.show',
-  // skills                  : DS.hasMany('skill',
-  //                             {inverse : 'assignment', async : true, embedded : 'always'}
-  //                           ),
-  // assignment_rewards      : DS.hasMany('assignment-reward',
-  //                             {inverse : 'assignment', async : true, embedded : 'always'}
-  //                           ),
+  skills                  : DS.hasMany('skill',
+                              {inverse : 'assignment', async : true, embedded : 'always'}
+                            ),
+  assignment_rewards      : DS.hasMany('assignment-reward',
+                              {inverse : 'assignment', async : true, embedded : 'always'}
+                            ),
   // assignment_bids         : DS.hasMany('assignment-bid',
   //                             {inverse : 'assignment', async : true, embedded : 'always'}
   //                           ),
   // assignment_priorities   : DS.hasMany('assignment-priority',
   //                             {inverse : 'assignment', async : true, embedded : 'always'}
   //                           ),
-  // languages               : DS.hasMany('language',
-  //                             {inverse : 'assignment', async : true, embedded : 'always'}
-  //                           ),
-  // locations               : DS.hasMany('location',
-  //                             {inverse : 'assignment', async : true, embedded : 'always'}
-  //                           ),
+  languages               : DS.hasMany('language',
+                              {inverse : 'assignment', async : true, embedded : 'always'}
+                            ),
+  locations               : DS.hasMany('location',
+                              {inverse : 'assignment', async : true, embedded : 'always'}
+                            ),
   skill_ids               : attr(),
   language_ids            : attr(),
   location_ids            : attr(),
