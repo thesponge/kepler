@@ -11,7 +11,7 @@
     "ember-resolver": "~0.1.20",
     "loader.js": "ember-cli/loader.js#3.4.0",
     "qunit": "~1.20.0",
-    "materialize": "~0.97.0",
+    "materialize": "https://github.com/Dogfalo/materialize.git#d5db2a3",
     "ember-simple-auth": "0.8.0",
     "perfect-scrollbar": "~0.6.7",
     "JavaScript-MD5": "~1.1.1",

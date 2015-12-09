@@ -23,8 +23,8 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth'] = {
-    routeAfterAuthentication    : "match.dashboard",
-    routeIfAlreadyAuthenticated : "match.dashboard",
+    routeAfterAuthentication    : "match",
+    routeIfAlreadyAuthenticated : "match",
   };
 
   ENV.contentSecurityPolicy = {

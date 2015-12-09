@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col s12 m8 l6 offset-m2 offset-l3">
     <form {{action 'register' on='submit'}}>
-      {{md-input value=identification 
+      {{md-input value=user.email 
         label='Email address' type='email' validate=true 
         icon='mdi-communication-email teal-text text-darken-4'}}
       {{md-input value=user.password label='Password' 

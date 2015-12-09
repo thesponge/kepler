@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+    queryParams: ['confirmation_token'],
   user: Ember.computed(function() {
     return this.store.createRecord('user');
   }),
@@ -10,13 +11,21 @@ export default Ember.Controller.extend({
       console.log('User: ' + this.get('user.email'));
       console.log('Password: ' + this.get('user.password'));
       console.log('Confirmation: ' + this.get('user.password_confirmation'));
-      var self = this;
-      this.get('user').save().then(function() {
-        self.notifications.addNotification({
+        var self = this;
+      this.get('user').save().then(() => {
+        this.notifications.addNotification({
           message: 'Done! Please check your inbox.',
           type: 'success'
         });
-        self.transitionToRoute('login');
+        this.transitionToRoute('login');
+      }, () => {
+          self.get('user').get('errors').map((v) => {
+              self.notifications.addNotification({
+                  message: v.attribute + ' ' + v.message,
+                  type: 'error',
+                  autoClear: true
+              });
+          });
       });
     },
   }

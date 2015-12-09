@@ -5,7 +5,4 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     setupController: function(controller) {
         controller.assignments = this.store.findAll('assignment');
     },
-  // activate: function() {
-  //   this.transitionTo('match.dashboard');
-  // }
 });
