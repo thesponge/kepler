@@ -1,13 +1,14 @@
 <div class="navbar-fixed">
 <nav class="teal darken-4">
   <div class="nav-wrapper">
-    {{#link-to 'index' class="brand-logo"}}
+    {{#link-to 'index' class="brand-logo yellow-text text-darken-3"}}
       <i class="mdi-action-view-carousel yellow-text text-darken-3" style="margin-left: 1em;">&nbsp;<b>KEP</b></i>
+      {{! <img src="/logo.png" style="height: 40px; margin: 10px 0px 0px 10px;"> }}
     {{/link-to}}
     <ul id="nav-mobile" class="right hide-on-med-and-down amber-text text-accent-3">
       {{#if session.isAuthenticated}}
-        {{#link-to 'match.dashboard' tagName='li'}}
-            {{link-to 'Match' 'match.dashboard'}}
+        {{#link-to 'match' tagName='li'}}
+            {{link-to 'Match' 'match'}}
         {{/link-to}}
         <li {{action 'invalidateSession'}} style="cursor: pointer;">
           <a {{action 'invalidateSession'}}>Logout</a>
@@ -27,8 +28,8 @@
 {{!--
 {{#md-navbar class='indigo'}}
   {{#if session.isAuthenticated}}
-    {{#link-to 'match.dashboard' tagName='li'}}
-        {{link-to 'Match' 'match.dashboard'}}
+    {{#link-to 'match' tagName='li'}}
+        {{link-to 'Match' 'match'}}
     {{/link-to}}
     <li {{action 'invalidateSession'}} style="cursor: pointer;">
       <a {{action 'invalidateSession'}}>Logout</a>

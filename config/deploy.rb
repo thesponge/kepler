@@ -1,6 +1,6 @@
 require 'mina/git'
 
-set :domain, 'wasp.thesponge.eu'
+set :domain, 'kep.thesponge.eu'
 set :user, 'www-data'
 set :repository, 'https://github.com/thesponge/kep-frontend'
 set :branch, 'master'

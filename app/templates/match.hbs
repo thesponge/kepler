@@ -1,0 +1,20 @@
+<div class="row grey lighten-4">
+  <div class="col s3">
+    {{user-submission-list submissions=resources}}
+    <a class="btn-floating waves-effect waves-light teal right"><i class="material-icons">+</i></a>
+  </div>
+  <div class="col s6">{{outlet}}</div>
+  <div class="col s3">
+    {{user-submission-list submissions=assignments}}
+    {{#tool-tipster title='Add assignment'}}
+        {{#link-to 'assignments.new' class='btn-floating waves-effect waves-light teal'}}
+            <i class="material-icons">+</i>
+        {{/link-to}}
+    {{/tool-tipster}}
+  </div>
+</div>
+
+<script type="text/javascript">
+$('div.collection').css('height', ($('main').height()-96));
+$('div.collection').perfectScrollbar();
+</script>

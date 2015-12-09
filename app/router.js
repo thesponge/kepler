@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import config from './config/environment';
 
-var Router = Ember.Router.extend({
+const Router = Ember.Router.extend({
   location: config.locationType
 });
 
@@ -10,15 +10,15 @@ Router.map(function() {
   this.route('register');
   this.route('recover');
   this.route('match', function() {
-    this.route('dashboard');
+    this.route('assignments', {resetNamespace: true}, function() {
+      this.route('show', {path: ':assignment_id'});
+      this.route('new');
+    });
   });
 
-  this.route('assignments', function() {
-    this.route('show');
-  });
 
   this.route('account', function() {
-    this.route('show');
+      this.route('show', {path: ':id'});
   });
 });
 

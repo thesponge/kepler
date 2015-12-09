@@ -9,27 +9,29 @@ var Assignment = DS.Model.extend({
   title                   : attr('string'),
   description             : attr('string'),
   state                   : attr('string'),
+  created_at              : attr('string'),
   user                    : DS.belongsTo('user',
                               {inverse: 'assignments', async: true}
                             ),
-  // skills                  : DS.hasMany('skill',
-  //                             {inverse : 'assignment', async : true, embedded : 'always'}
-  //                           ),
-  // assignment_rewards      : DS.hasMany('assignment-reward',
-  //                             {inverse : 'assignment', async : true, embedded : 'always'}
-  //                           ),
+    show_route              : 'assignments.show',
+  skills                  : DS.hasMany('skill',
+                              {inverse : 'assignment', async : true, embedded : 'always'}
+                            ),
+  assignment_rewards      : DS.hasMany('assignment-reward',
+                              {inverse : 'assignment', async : true, embedded : 'always'}
+                            ),
   // assignment_bids         : DS.hasMany('assignment-bid',
   //                             {inverse : 'assignment', async : true, embedded : 'always'}
   //                           ),
   // assignment_priorities   : DS.hasMany('assignment-priority',
   //                             {inverse : 'assignment', async : true, embedded : 'always'}
   //                           ),
-  // languages               : DS.hasMany('language',
-  //                             {inverse : 'assignment', async : true, embedded : 'always'}
-  //                           ),
-  // locations               : DS.hasMany('location',
-  //                             {inverse : 'assignment', async : true, embedded : 'always'}
-  //                           ),
+  languages               : DS.hasMany('language',
+                              {inverse : 'assignment', async : true, embedded : 'always'}
+                            ),
+  locations               : DS.hasMany('location',
+                              {inverse : 'assignment', async : true, embedded : 'always'}
+                            ),
   skill_ids               : attr(),
   language_ids            : attr(),
   location_ids            : attr(),
@@ -37,6 +39,9 @@ var Assignment = DS.Model.extend({
   assignment_priority_ids : attr(),
   assignment_bid_ids      : attr(),
 
+    created: Ember.computed('created_at', function() {
+        return moment(this.get('created_at'), moment.ISO_8601).fromNow();
+    }),
   formatted_description : Ember.computed('description', function() {
         return this.get('description').replace(/\n\r?/g, '<br>');
   }).property('description').cacheable(),

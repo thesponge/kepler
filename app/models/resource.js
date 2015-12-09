@@ -8,6 +8,7 @@ var Resource = DS.Model.extend({
   submissionType : 'resource',
   title          : attr('string'),
   description    : attr('string'),
+    show_route              : 'resources.show',
   user           : DS.belongsTo('user', {inverse: 'resources', async: true}),
   // intentions     : DS.hasMany('intention', {async : true, embedded : 'always'}),
   intention_ids  : attr(),

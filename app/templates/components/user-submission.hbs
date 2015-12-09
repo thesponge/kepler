@@ -1,10 +1,7 @@
-  <a href="#" class="collection-item">
-    {{!-- <h6>
-      <i class="mdi-toggle-star-outline grey-text favorite-icon"></i>
-    </h6> --}}
+{{#link-to submission.show_route submission.id class="collection-item"}}
     <div class="row valign-wrapper">
       <div class="col s2">
-        <img src="http://cdn.libravatar.org/avatar/5e286ca43990910749b9837adaf21596?s=30&d=retro" class="circle avatar">
+        {{libravatar-image email=submission.user.email size=36 secure=false class='circle avatar'}}
       </div>
       <div class="col s10">
         <span class="title"><b>{{submission.title}}</b></span>
@@ -14,4 +11,4 @@
     <small class="grey-text">
         {{submission.description_fragment}}
     </small>
-  </a>
+{{/link-to}}

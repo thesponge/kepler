@@ -1,0 +1,73 @@
+<h5 class="teal-text text-lighten-4">New assignment</h5>
+
+<form id="newassignment" {{action 'submitAssignment' on='submit'}}>
+  {{#each flashes.queue as |flash|}}
+    {{flash-message flash=flash messageStyle='foundation' class='radius'}}
+  {{/each}}
+
+  {{md-input label='Enter a title' value=assignment.title}}
+  {{md-textarea label='Description' value=assignment.description}}
+  <div class="row">
+    <div class="col s12">
+      {{input placeholder='Enter your location' value=assignment.location}}
+    </div>
+    <div class="col s12">
+      <label>Assignment language(s)</label>
+      {{select-2
+          content=languages_select
+          value=assignment.language_ids
+          multiple=true
+          optionValuePath="id"
+          optionLabelPath="common"
+          placeholder="What languages are necessary for the assignment?"
+      }}
+    </div>
+    <div class="col s12">
+    </div>
+    <div class="col s12">
+      <label>Assignment skill(s)</label>
+      {{select-2
+          content=skills_select
+          value=assignment.skill_ids
+          multiple=true
+          optionValuePath="id"
+          placeholder="What type of assignment is this?"
+      }}
+    </div>
+    <div class="col s12">
+      <label>Reward(s)</label>
+      {{select-2
+          content=rewards_select
+          placeholder="Reward?"
+          value=assignment.assignment_reward_ids
+          multiple=true
+          optionValuePath="id"
+          optionLabelPath="reward"
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 right-align">
+        {{md-btn icon='mdi-navigation-cancel'
+            action='cancel'
+            iconPosition='right'
+            text='Cancel'
+            class='red darken-3'}}
+        {{md-btn-submit icon='mdi-content-save'
+            iconPosition='right'
+            text='Save'
+            class='yellow darken-3'}}
+    </div>
+  </div>
+  {{!--
+  <button {{action "dangerAction"}}>Test</button>
+  <button {{action "successAction"}}>Test</button>
+  <button {{action "warningAction"}}>Test</button>
+  <button {{action "infoAction"}}>Test</button>
+  <button {{action "customAction"}}>Test</button>
+  --}}
+</form>
+<script type="text/javascript">
+    $('#location').jeoCityAutoComplete();
+</script>
+
