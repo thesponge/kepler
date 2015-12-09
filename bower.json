@@ -16,7 +16,8 @@
     "perfect-scrollbar": "~0.6.7",
     "JavaScript-MD5": "~1.1.1",
     "tooltipster": "~3.3.0",
-    "select2": "3.5.2"
+    "select2": "3.5.2",
+    "font-awesome": "~4.4.0"
   },
   "resolutions": {
     "jquery": ">=2.1.1",
