@@ -1,7 +1,7 @@
 {{outlet}}
 <div class="v50"></div>
 
-<div class="row">
+<div class="row account-container">
   <div class="container">
     <div class="col s3">
       <div class="row">
@@ -13,31 +13,47 @@
           <h5>{{model.account.computed_display_name}}</h5>
           <small><i>({{model.email}})</i></small><br/>
           <small><a href="{{model.account.url}}" target="_blank">{{model.account.url}}</a></small>
+          <hr/>
         </div>
         {{#if model.account.affiliations}}
         <div class="col s12">
-          <ul>
-            {{#each model.account.affiliations as |affiliation|}}
-            <li><a href="{{affiliation.link}}">{{affiliation.affiliation}}</a></li>
-            {{/each}}
-          </ul>
+          <div class="row">
+            <div class="col s2">{{fa-icon 'link'}}</div>
+            <div class="col s10">
+                <ul class="sidebar-list">
+                    {{#each model.account.affiliations as |affiliation|}}
+                        <li><a href="{{affiliation.link}}">{{affiliation.affiliation}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+          </div>
         </div>
         {{/if}}
         {{#if model.account.locations}}
         <div class="col s12">
-          <ul>
-            {{#each model.account.locations as |location|}}
-                <li>{{location.city}}, {{location.state}}, {{location.country}}</li>
-            {{/each}}
-          </ul>
+          <div class="row">
+            <div class="col s2">{{fa-icon 'globe'}}</div>
+            <div class="col s10">
+                <ul class="sidebar-list">
+                    {{#each model.account.locations as |location|}}
+                        <li>{{location.city}}, {{location.state}}, {{location.country}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+          </div>
         </div>
         {{/if}}
         <div class="col s12">
-          <ul>
-            {{#each model.account.languages as |language|}}
-                <li>{{language.common}}</li>
-            {{/each}}
-          </ul>
+          <div class="row">
+            <div class="col s2">{{fa-icon 'language'}}</div>
+            <div class="col s10">
+                <ul class="sidebar-list">
+                    {{#each model.account.languages as |language|}}
+                        <li>{{language.common}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -46,7 +62,7 @@
     <div class="col s9">
       <div class="row">
         <div class="col s12">
-          <blockquote class="hoverable">
+          <blockquote>
             {{{model.account.bio}}}
           </blockquote>
         </div>
@@ -59,14 +75,14 @@
               {{/md-badge}}
             {{/each}}
           </i></p>
-        </div>
+        </div> 
         {{/if}}
         <div class="col s12"> <hr/> </div>
         <div class="col s12">
           <div class="row">
             <div class="col s6">
               <b>Resources offered</b>
-                <div class="collection hoverable">
+                <div class="collection">
                     {{#each model.resources as |resource|}}
                         <a class="collection-item">
                         {{resource.title}}
@@ -76,7 +92,7 @@
             </div>
             <div class="col s6">
               <b>Assignments given</b>
-                <div class="collection hoverable">
+                <div class="collection">
                     {{#each model.assignments as |assignment|}}
                         <a class="collection-item">
                             {{assignment.title}}

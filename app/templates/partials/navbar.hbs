@@ -12,16 +12,17 @@
           {{/link-to}}
             <!-- Dropdown Trigger -->
               <li>
-                  {{#md-btn-dropdown id="profile-dropdown" text=session.session.content.authenticated.email belowOrigin=true}}
-                      <li {{action 'invalidateSession'}} style="cursor: pointer;">
-                          <a {{action 'invalidateSession'}}>Logout</a>
-                      </li>
+                  {{#md-btn-dropdown id="profile-dropdown" text=session.session.content.authenticated.email hover=true belowOrigin=true}}
                       {{#link-to 'account.show' session.session.content.authenticated.id tagName='li'}}
                           {{link-to 'Account' 'account.show' session.session.content.authenticated.id}}
                       {{/link-to}}
                       {{#link-to 'account.settings' tagName='li'}}
                           {{link-to 'Settings' 'account.settings'}}
                       {{/link-to}}
+                      <li class="divider"></li>
+                      <li {{action 'invalidateSession'}} style="cursor: pointer;">
+                          <a {{action 'invalidateSession'}}>Logout</a>
+                      </li>
                   {{/md-btn-dropdown}}
               </li>
         {{else}}
