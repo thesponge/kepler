@@ -1,0 +1,20 @@
+<div class="v50">&nbsp;</div>
+<div class="row">
+  <div class="col s12 m8 l6 offset-m2 offset-l3">
+    <h5>Change password</h5>
+    <form {{action 'authenticate' on='submit'}}>
+      {{md-input value=password label='Current password' type='password'
+          validate=true icon='mdi-communication-vpn-key yellow-text text-darken-3'}}
+      {{md-input value=password label='New password' type='password'
+          validate=true icon='mdi-communication-vpn-key teal-text text-darken-4'}}
+      {{md-input value=password label='Password confirmation' type='password'
+          validate=true icon='mdi-av-replay teal-text text-darken-4'}}
+
+      {{md-btn-submit icon='mdi-content-send'
+          iconPosition='right'
+          text='Save'
+          class='right yellow darken-3'}}
+    </form>
+  </div>
+</div>
+<div class="divider"></div>

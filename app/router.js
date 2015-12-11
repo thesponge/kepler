@@ -18,7 +18,8 @@ Router.map(function() {
 
 
   this.route('account', function() {
-      this.route('show', {path: ':id'});
+    this.route('show', {path: ':id'});
+    this.route('settings');
   });
 });
 
