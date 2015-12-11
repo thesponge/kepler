@@ -1,1 +1,144 @@
 {{outlet}}
+<div class="v50"></div>
+
+<div class="row h300">
+  <div class="col s10 offset-s1 profile">
+    <div class="row">
+
+      <div class="col s6 profile-left">
+        <div class="bio-container">
+          <span class="label secondary">Biography:</span>
+          {{#if model.account.is_owner}}
+            <a {{action 'modalFor' 'account/update/bio'}}>{{fa-icon 'edit'}}</a>
+          {{/if}}
+          <div class="bio">
+            {{model.account.bio}}
+          </div>
+        </div>
+        <div class="url-container">
+          <span class="label secondary">Website:</span>
+          {{#if model.account.is_owner}}
+            <a {{action 'modalFor' 'account/update/url'}}>{{fa-icon 'edit'}}</a>
+          {{/if}}
+          <div class="url">
+            <a {{bind-attr href=model.account.url}}>
+              {{model.account.url}}
+            </a>
+          </div>
+        </div>
+        <div class="locations-container">
+          <span class="label secondary">Locations:</span>
+          {{#if model.account.is_owner}}
+            <a {{action 'modalFor' 'account/update/locations'}}>{{fa-icon 'edit'}}</a>
+          {{/if}}
+          <ul>
+            {{#each location in model.account.locations}}
+              <li>{{location.city}}, {{location.country}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+
+      <div class="col s6 profile-inset">
+        <div class="row">
+          <div class="col s8 profile-center">
+            <div class="username-container text-center">
+              <span>{{model.account.display_name}}</span>
+              {{#if model.account.is_owner}}
+                <a {{action 'modalFor' 'account/update/display-name'}}>{{fa-icon 'edit'}}</a>
+              {{/if}}
+            </div>
+            <div class="avatar-container">
+              <div class="avatar">
+                {{libravatar-image email='victor@thesponge.eu'
+                  alt=model.account.display_name size=150 default='identicon'}}
+              </div>
+            </div>
+            <br>
+            <div class="affiliations-container">
+              <span class="label secondary">Affiliations:</span>
+              {{#if model.account.is_owner}}
+                <a {{action 'modalFor' 'account/update/affiliations'}}>{{fa-icon 'edit'}}</a>
+              {{/if}}
+              <ul class="affiliations">
+                {{#each affiliation in model.account.affiliations}}
+                  <li>
+                    <a {{bind-attr href=affiliaton.link}}>
+                      {{affiliation.affiliation}}
+                    </a>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+          <div class="col s4 profile-right">
+            <div class="skills-container">
+              <span class="label secondary">Skills:</span>
+              {{#if model.account.is_owner}}
+                <a {{action 'modalFor' 'account/update/skills'}}>{{fa-icon 'edit'}}</a>
+              {{/if}}
+              <ul class="skills">
+                {{#each skill in model.account.skills}}
+                  {{skill.name}}
+                  ({{skill.category}})
+                {{/each}}
+              </ul>
+            </div>
+            <div class="languages-container">
+              <span class="label secondary">Languages:</span>
+              {{#if model.account.is_owner}}
+                <a {{action 'modalFor' 'account/update/languages'}}>{{fa-icon 'edit'}}</a>
+              {{/if}}
+              <ul class="languages">
+                {{#each language in model.account.languages}}
+                  <li>{{language.common}}</li>
+                {{/each}}
+              </ul>
+            </div>
+            <div class="intentions-container">
+              <span class="label secondary">Intentions:</span>
+              {{#if model.account.is_owner}}
+                <a {{action 'modalFor' 'account/update/intentions'}}>{{fa-icon 'edit'}}</a>
+              {{/if}}
+              <ul class="intentions">
+                {{#each intention in model.account.intentions}}
+                  <li>{{intention.intention}}</li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="row">
+      <div class="col s12">
+        <ul class="submissions">
+          <li class="col s6 resources">
+            <span class="label secondary">Resources shared:</span>
+            <ul>
+              {{#each resource in model.resources}}
+                <li>
+                  {{#link-to 'resources.show' resource.id}}{{resource.title}}{{/link-to}}
+                </li>
+              {{/each}}
+            </ul>
+          </li>
+          <li class="col s6 assignments">
+            <span class="label secondary">Assignments offered:</span>
+            <ul>
+              {{#each assignment in model.assignments}}
+                <li>
+                  {{#link-to 'assignments.show' assignment.id}}{{assignment.title}}{{/link-to}}
+                </li>
+              {{/each}}
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="spacer"></div>

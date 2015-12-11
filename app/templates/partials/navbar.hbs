@@ -1,46 +1,45 @@
 <div class="navbar-fixed">
-<nav class="teal darken-4">
-  <div class="nav-wrapper">
-    {{#link-to 'index' class="brand-logo yellow-text text-darken-3"}}
-      <i class="mdi-action-view-carousel yellow-text text-darken-3" style="margin-left: 1em;">&nbsp;<b>KEP</b></i>
-      {{! <img src="/logo.png" style="height: 40px; margin: 10px 0px 0px 10px;"> }}
-    {{/link-to}}
-    <ul id="nav-mobile" class="right hide-on-med-and-down amber-text text-accent-3">
-      {{#if session.isAuthenticated}}
-        {{#link-to 'match' tagName='li'}}
-            {{link-to 'Match' 'match'}}
-        {{/link-to}}
-        <li {{action 'invalidateSession'}} style="cursor: pointer;">
-          <a {{action 'invalidateSession'}}>Logout</a>
-        </li>
-      {{else}}
-        {{#link-to 'register' tagName='li'}}
-            {{link-to 'Register' 'register'}}
-        {{/link-to}}
-        {{#link-to 'login' tagName='li'}}
-            {{link-to 'Login' 'login'}}
-        {{/link-to}}
-      {{/if}}
-    </ul>
-  </div>
-</nav>
+  <nav class="teal darken-4">
+    <div class="nav-wrapper">
+      {{#link-to 'index' class="brand-logo yellow-text text-darken-3"}}
+        <i class="mdi-action-view-carousel yellow-text text-darken-3" style="margin-left: 1em;">&nbsp;<b>KEP</b></i>
+        {{! <img src="/logo.png" style="height: 40px; margin: 10px 0px 0px 10px;"> }}
+      {{/link-to}}
+      <ul id="nav-mobile" class="right hide-on-med-and-down amber-text text-accent-3">
+        {{#if session.isAuthenticated}}
+          {{#link-to 'match' tagName='li'}}
+              {{link-to 'Match' 'match'}}
+          {{/link-to}}
+            <!-- Dropdown Trigger -->
+              <li>
+                  {{#md-btn-dropdown id="profile-dropdown" text='Profile' belowOrigin=true}}
+                      <li {{action 'invalidateSession'}} style="cursor: pointer;">
+                          <a {{action 'invalidateSession'}}>Logout</a>
+                      </li>
+                      {{#link-to 'account.show' session.session.content.authenticated.id tagName='li'}}
+                          {{link-to 'Account' 'account.show' session.session.content.authenticated.id}}
+                      {{/link-to}}
+                      {{#link-to 'account.settings' tagName='li'}}
+                          {{link-to 'Settings' 'account.settings'}}
+                      {{/link-to}}
+                  {{/md-btn-dropdown}}
+              </li>
+        {{else}}
+          {{#link-to 'register' tagName='li'}}
+              {{link-to 'Register' 'register'}}
+          {{/link-to}}
+          {{#link-to 'login' tagName='li'}}
+              {{link-to 'Login' 'login'}}
+          {{/link-to}}
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
 </div>
-{{!--
-{{#md-navbar class='indigo'}}
-  {{#if session.isAuthenticated}}
-    {{#link-to 'match' tagName='li'}}
-        {{link-to 'Match' 'match'}}
-    {{/link-to}}
-    <li {{action 'invalidateSession'}} style="cursor: pointer;">
-      <a {{action 'invalidateSession'}}>Logout</a>
-    </li>
-  {{else}}
-    {{#link-to 'register' tagName='li'}}
-        {{link-to 'Register' 'register'}}
-    {{/link-to}}
-    {{#link-to 'login' tagName='li'}}
-        {{link-to 'Login' 'login'}}
-    {{/link-to}}
-  {{/if}}
-{{/md-navbar}}
---}}
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    // TODO: Ugly hack, create custom md-dropdown helper
+    $('#profile-dropdown').removeClass('btn waves-light waves-effect');
+  });
+</script>
