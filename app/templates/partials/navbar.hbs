@@ -12,7 +12,7 @@
           {{/link-to}}
             <!-- Dropdown Trigger -->
               <li>
-                  {{#md-btn-dropdown id="profile-dropdown" text='Profile' belowOrigin=true}}
+                  {{#md-btn-dropdown id="profile-dropdown" text=session.session.content.authenticated.email belowOrigin=true}}
                       <li {{action 'invalidateSession'}} style="cursor: pointer;">
                           <a {{action 'invalidateSession'}}>Logout</a>
                       </li>
