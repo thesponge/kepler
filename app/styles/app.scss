@@ -71,6 +71,12 @@ main {
   }
 }
 
+div.row.account-container {
+  ul.sidebar-list {
+    margin-top: 0px;
+  }
+}
+
 div.v50 { display: block; height: 50px; }
 
 /* Submission styles */
@@ -87,4 +93,10 @@ div.row.submission-header {
   input {
     height: 24px;
   }
+}
+span.intention-badge {
+  position: relative;
+  right: auto;
+  margin-right: 5px;
+  cursor: pointer;
 }

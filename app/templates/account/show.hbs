@@ -1,144 +1,108 @@
 {{outlet}}
 <div class="v50"></div>
 
-<div class="row h300">
-  <div class="col s10 offset-s1 profile">
-    <div class="row">
-
-      <div class="col s6 profile-left">
-        <div class="bio-container">
-          <span class="label secondary">Biography:</span>
-          {{#if model.account.is_owner}}
-            <a {{action 'modalFor' 'account/update/bio'}}>{{fa-icon 'edit'}}</a>
-          {{/if}}
-          <div class="bio">
-            {{model.account.bio}}
+<div class="row account-container">
+  <div class="container">
+    <div class="col s3">
+      <div class="row">
+        <div class="col s12">
+            {{libravatar-image email=model.email secure=false class='circle'
+                alt=model.account.display_name size=100 defaultImage='retro'}}
+        </div>
+        <div class="col s12">
+          <h5>{{model.account.computed_display_name}}</h5>
+          <small><i>({{model.email}})</i></small><br/>
+          <small><a href="{{model.account.url}}" target="_blank">{{model.account.url}}</a></small>
+          <hr/>
+        </div>
+        {{#if model.account.affiliations}}
+        <div class="col s12">
+          <div class="row">
+            <div class="col s2">{{fa-icon 'link'}}</div>
+            <div class="col s10">
+                <ul class="sidebar-list">
+                    {{#each model.account.affiliations as |affiliation|}}
+                        <li><a href="{{affiliation.link}}">{{affiliation.affiliation}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
           </div>
         </div>
-        <div class="url-container">
-          <span class="label secondary">Website:</span>
-          {{#if model.account.is_owner}}
-            <a {{action 'modalFor' 'account/update/url'}}>{{fa-icon 'edit'}}</a>
-          {{/if}}
-          <div class="url">
-            <a {{bind-attr href=model.account.url}}>
-              {{model.account.url}}
-            </a>
-          </div>
-        </div>
-        <div class="locations-container">
-          <span class="label secondary">Locations:</span>
-          {{#if model.account.is_owner}}
-            <a {{action 'modalFor' 'account/update/locations'}}>{{fa-icon 'edit'}}</a>
-          {{/if}}
-          <ul>
-            {{#each location in model.account.locations}}
-              <li>{{location.city}}, {{location.country}}</li>
-            {{/each}}
-          </ul>
-        </div>
-      </div>
-
-      <div class="col s6 profile-inset">
-        <div class="row">
-          <div class="col s8 profile-center">
-            <div class="username-container text-center">
-              <span>{{model.account.display_name}}</span>
-              {{#if model.account.is_owner}}
-                <a {{action 'modalFor' 'account/update/display-name'}}>{{fa-icon 'edit'}}</a>
-              {{/if}}
-            </div>
-            <div class="avatar-container">
-              <div class="avatar">
-                {{libravatar-image email='victor@thesponge.eu'
-                  alt=model.account.display_name size=150 default='identicon'}}
-              </div>
-            </div>
-            <br>
-            <div class="affiliations-container">
-              <span class="label secondary">Affiliations:</span>
-              {{#if model.account.is_owner}}
-                <a {{action 'modalFor' 'account/update/affiliations'}}>{{fa-icon 'edit'}}</a>
-              {{/if}}
-              <ul class="affiliations">
-                {{#each affiliation in model.account.affiliations}}
-                  <li>
-                    <a {{bind-attr href=affiliaton.link}}>
-                      {{affiliation.affiliation}}
-                    </a>
-                  </li>
-                {{/each}}
-              </ul>
+        {{/if}}
+        {{#if model.account.locations}}
+        <div class="col s12">
+          <div class="row">
+            <div class="col s2">{{fa-icon 'globe'}}</div>
+            <div class="col s10">
+                <ul class="sidebar-list">
+                    {{#each model.account.locations as |location|}}
+                        <li>{{location.city}}, {{location.state}}, {{location.country}}</li>
+                    {{/each}}
+                </ul>
             </div>
           </div>
-          <div class="col s4 profile-right">
-            <div class="skills-container">
-              <span class="label secondary">Skills:</span>
-              {{#if model.account.is_owner}}
-                <a {{action 'modalFor' 'account/update/skills'}}>{{fa-icon 'edit'}}</a>
-              {{/if}}
-              <ul class="skills">
-                {{#each skill in model.account.skills}}
-                  {{skill.name}}
-                  ({{skill.category}})
-                {{/each}}
-              </ul>
-            </div>
-            <div class="languages-container">
-              <span class="label secondary">Languages:</span>
-              {{#if model.account.is_owner}}
-                <a {{action 'modalFor' 'account/update/languages'}}>{{fa-icon 'edit'}}</a>
-              {{/if}}
-              <ul class="languages">
-                {{#each language in model.account.languages}}
-                  <li>{{language.common}}</li>
-                {{/each}}
-              </ul>
-            </div>
-            <div class="intentions-container">
-              <span class="label secondary">Intentions:</span>
-              {{#if model.account.is_owner}}
-                <a {{action 'modalFor' 'account/update/intentions'}}>{{fa-icon 'edit'}}</a>
-              {{/if}}
-              <ul class="intentions">
-                {{#each intention in model.account.intentions}}
-                  <li>{{intention.intention}}</li>
-                {{/each}}
-              </ul>
+        </div>
+        {{/if}}
+        <div class="col s12">
+          <div class="row">
+            <div class="col s2">{{fa-icon 'language'}}</div>
+            <div class="col s10">
+                <ul class="sidebar-list">
+                    {{#each model.account.languages as |language|}}
+                        <li>{{language.common}}</li>
+                    {{/each}}
+                </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="divider"></div>
-
-    <div class="row">
-      <div class="col s12">
-        <ul class="submissions">
-          <li class="col s6 resources">
-            <span class="label secondary">Resources shared:</span>
-            <ul>
-              {{#each resource in model.resources}}
-                <li>
-                  {{#link-to 'resources.show' resource.id}}{{resource.title}}{{/link-to}}
-                </li>
-              {{/each}}
-            </ul>
-          </li>
-          <li class="col s6 assignments">
-            <span class="label secondary">Assignments offered:</span>
-            <ul>
-              {{#each assignment in model.assignments}}
-                <li>
-                  {{#link-to 'assignments.show' assignment.id}}{{assignment.title}}{{/link-to}}
-                </li>
-              {{/each}}
-            </ul>
-          </li>
-        </ul>
+    <!-- Main content begins here -->
+    <div class="col s9">
+      <div class="row">
+        <div class="col s12">
+          <blockquote>
+            {{{model.account.bio}}}
+          </blockquote>
+        </div>
+        {{#if model.account.intentions}}
+        <div class="col s12">
+          <p><i>Came here for:
+            {{#each model.account.intentions as |intention|}}
+              {{#md-badge class='teal lighten-4 intention-badge'}}
+                {{intention.intention}} 
+              {{/md-badge}}
+            {{/each}}
+          </i></p>
+        </div> 
+        {{/if}}
+        <div class="col s12"> <hr/> </div>
+        <div class="col s12">
+          <div class="row">
+            <div class="col s6">
+              <b>Resources offered</b>
+                <div class="collection">
+                    {{#each model.resources as |resource|}}
+                        <a class="collection-item">
+                        {{resource.title}}
+                        </a>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="col s6">
+              <b>Assignments given</b>
+                <div class="collection">
+                    {{#each model.assignments as |assignment|}}
+                        <a class="collection-item">
+                            {{assignment.title}}
+                        </a>
+                    {{/each}}
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<div class="spacer"></div>
